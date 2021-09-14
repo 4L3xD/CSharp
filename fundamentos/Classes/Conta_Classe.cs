@@ -20,20 +20,24 @@ class Conta
     }
   }
 
-  public void Deposito(double valor)
+  public bool Deposito(double valor)
   {
     this.saldo += valor;
+    return true;
   }
 
   // "void" pode ser substituído pelo tipo retornado, exigindo um return na função. O return() sai do método quando executado.
-  public bool Transferencia(double valor, Conta destino)
+  public void Transferencia(double valor, Conta destino)
   {
     if (this.saldo >= valor)
     {
       destino.saldo += valor;
       this.saldo -= valor;
     }
-    return true;
+    else
+    {
+      Console.WriteLine("Sem saldo suficiente!");
+    }
   }
 
 }
