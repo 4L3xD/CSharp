@@ -26,7 +26,7 @@ class Conta
   }
 
   // "void" pode ser substituído pelo tipo retornado, exigindo um return na função. O return() sai do método quando executado.
-  public bool Tranferencia(double valor, Conta destino)
+  public bool Transferencia(double valor, Conta destino)
   {
     if (this.saldo >= valor)
     {

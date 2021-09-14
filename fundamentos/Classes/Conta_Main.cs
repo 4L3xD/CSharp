@@ -1,8 +1,19 @@
 using System;
+using System.Linq;
+/* Biblioteca referente à
+string[] log = {};
+log = log.Append("1").ToArray();
+*/
+using System.Collections.Generic;
+/* Biblioteca referente à
+List<string> log = new List<string>();
+log.Add("1");*/
 
 class Program {
   public static void Main (string[] args) {
     Console.WriteLine ("Bem vindo à sua conta bancária!");
+    string[] log = {};
+    //List<string> log = new List<string>();
 
     // Criando uma nova instância de Conta na memória
     // c# alocará memória para guardar as infos da conta dentro da applicação
@@ -29,6 +40,8 @@ class Program {
         
         usuario0.Saque(valor_saque);
         Console.WriteLine($"Seu saldo é de {usuario0.saldo}.");
+        log = log.Append($"Saque: {valor_saque}").ToArray();
+        //log.Add("1");
         break;
       
       case "2":
@@ -37,19 +50,25 @@ class Program {
         usuario0.Deposito(valor_deposito);
         
         Console.WriteLine($"Seu saldo é de {usuario0.saldo}.");
+        log = log.Append($"Saque: {valor_deposito}").ToArray();
         break;
 
       case "3":
         Console.WriteLine("Digite o valor da transferência:");
-        double valor_tranferencia = Double.Parse(Console.ReadLine());
-        usuario0.Tranferencia(valor_tranferencia, usuario1);
+        double valor_transferencia = Double.Parse(Console.ReadLine());
+        usuario0.Transferencia(valor_transferencia, usuario1);
 
         Console.WriteLine($"Saldo0: {usuario0.saldo}, Saldo1: {usuario1.saldo}");
+        log = log.Append($"Saque: {valor_transferencia}").ToArray();
         break;
 
       case "4":
         Console.WriteLine($"\n         EXTRATO:         \n");
         Console.WriteLine($"");
+        foreach (var transacoes in log)
+        {
+          Console.WriteLine(transacoes);
+        }
         break;
     }
   }
